@@ -22,7 +22,10 @@ public class Runner {
 			for (int y = 0; y < building[x].length; y++)
 			{
 				building[x][y] = new Room(x,y);
+				System.out.println();
 			}
+			System.out.println();
+
 		}
 		
 		//Create a random winning room.
