@@ -9,6 +9,8 @@ public class Fire extends Creature {
 
     public Fire (Creature creature)
     {
+        this.name = creature.name;
+
         this.weight = creature.weight;
         this.attack = creature.attack;
         this.speed = creature.speed;

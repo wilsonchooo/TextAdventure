@@ -9,6 +9,7 @@ public class Water extends Creature {
 
     public Water (Creature creature)
     {
+        this.name = creature.name;
         this.weight = creature.weight;
         this.attack = creature.attack;
         this.speed = creature.speed;

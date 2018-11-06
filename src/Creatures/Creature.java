@@ -10,6 +10,9 @@ public class Creature {
     public double defense;
     int  xLoc, yLoc;
 
+
+    String[] myStringArray = {"Abomasnow","Abra","Pikachu","Wilson","Altaria","Archeops","Folwell","Gengar","Hoftyzer","Giratina","Kabuto","Minun","Milktank","Nidoking","Patrat","Pansear","Pichu"};
+
     public Creature()
     {
     }
@@ -35,7 +38,9 @@ public class Creature {
 
 
             }
-            this.name = "zz";
+
+            int namenumber = (int) Math.floor(Math.random() * myStringArray.length);
+            this.name = myStringArray[namenumber];
             this.weight = stats[0];
             this.attack = stats[1];
             this.speed = stats[2];
@@ -46,6 +51,8 @@ public class Creature {
 
 
         }
+
+
 
 
     public static double round (double value, int precision) {

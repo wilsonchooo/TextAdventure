@@ -10,6 +10,7 @@ public class Air extends Creature {
 
     public Air (Creature creature)
     {
+        this.name = creature.name;
         this.weight = creature.weight;
         this.attack = creature.attack;
         this.speed = creature.speed;
@@ -30,6 +31,7 @@ public class Air extends Creature {
         this.speed = round(this.speed *2,2) ;
 
         this.defense =round(this.defense *.8,2);
+
 
     }
 

@@ -28,6 +28,20 @@ public class Room {
     {
         return this.creature;
     }
+
+    public void captureCreature(Creature[] bag)
+    {
+        for (int i=0;i<bag.length;i++)
+        {
+            if (bag[i].getAttack() == 0 )
+            {
+                bag[i] = this.creature;
+                break;
+            }
+
+
+        }
+    }
 	public void enterRoom(Person x)
 	{
 		System.out.println("You enter a plain old room");

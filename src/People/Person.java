@@ -1,5 +1,7 @@
 package People;
 
+import Creatures.Creature;
+
 /**
  * Person represents the player as they move through the game.
  */
@@ -7,6 +9,27 @@ public class Person {
 	String firstName;
 	String familyName;
 	int xLoc, yLoc;
+	public static Creature[] bag = new Creature[6];
+
+
+
+
+
+	 public Creature[] getBag()
+	 {
+	 	return bag;
+	 }
+
+	 public void printbag ()
+	 {
+	 	for (int i=0; i< this.bag.length;i++)
+		{
+			if (this.bag[i].getName().equals(""))
+				System.out.println("blank");
+			else
+			System.out.println(this.bag[i].getName());
+		}
+	 }
 
 
 	public int getxLoc() {

@@ -5,6 +5,7 @@ import Creatures.Earth;
 import Creatures.Fire;
 import Creatures.Water;
 import Creatures.Creature;
+import People.Person;
 import Rooms.Forest;
 import Rooms.House;
 import Rooms.Road;
@@ -32,12 +33,11 @@ public class Board {
         Air one = new Air();
         one.Fill();
         one.apply();
-        int x = 0;
 
 
         for (int i = 0; i < map.length; i++) {
-            Creature iwanttodie = new Creature();
-            iwanttodie.Fill();
+            Creature creature = new Creature();
+            creature.Fill();
 
             for (int j = 0; j < map[i].length; j++) {
                 int roomtype = (int) Math.floor(Math.random() * 3);
@@ -48,115 +48,95 @@ public class Board {
                 if (roomtype == 0) {
 
                     if (monstertype < 3) {
-                        Fire iwanttodie2 = new Fire(iwanttodie);
-                        iwanttodie2.apply();
-                        map[i][j] = new House(i, j, iwanttodie2);
-                        System.out.print(iwanttodie2.getAttack() + " ");
-
+                        Fire creature2 = new Fire(creature);
+                        creature2.apply();
+                        map[i][j] = new House(i, j, creature2);
+                     //   System.out.print(iwanttodie2.getAttack() + " ");
                     }
                     else
                     {
-                        Water iwanttodie2 = new Water(iwanttodie);
-                        iwanttodie2.apply();
-                        System.out.print(iwanttodie2.getAttack() + " ");
-                        map[i][j] = new House(i, j, iwanttodie2);
-
-
+                        Water creature2 = new Water(creature);
+                        creature2.apply();
+                        //System.out.print(iwanttodie2.getAttack() + " ");
+                        map[i][j] = new House(i, j, creature2);
                     }
-
+                    System.out.print("H  ");
                 }
-
                 if (roomtype == 1) {
 
                     if (monstertype < 3)
                     {
-                        Earth iwanttodie2 = new Earth(iwanttodie);
-                        iwanttodie2.apply();
-                        map[i][j] = new House(i, j, iwanttodie2);
-
-                        System.out.print(iwanttodie2.getAttack() + " ");
-
-
+                        Earth creature2 = new Earth(creature);
+                        creature2.apply();
+                        map[i][j] = new Forest(i, j, creature2);
+                       // System.out.print(iwanttodie2.getAttack() + " ");
                     }
-                    else  {
-                        Water iwanttodie2 = new Water(iwanttodie);
-                        iwanttodie2.apply();
-                        map[i][j] = new House(i, j, iwanttodie2);
-
-                        System.out.print(iwanttodie2.getAttack() + " ");
-
-
+                    else
+                        {
+                        Water creature2 = new Water(creature);
+                            creature2.apply();
+                        map[i][j] = new Forest(i, j, creature2);
+                        //System.out.print(iwanttodie2.getAttack() + " ");
                     }
-
+                    System.out.print("F  ");
                 }
-
                 if (roomtype == 2) {
 
                     if (monstertype < 3)
                     {
-                        Air iwanttodie2 = new Air(iwanttodie);
-                        iwanttodie2.apply();
-                        map[i][j] = new House(i, j, iwanttodie2);
-                        System.out.print(iwanttodie2.getAttack() + " ");
-
+                        Air creature2 = new Air(creature);
+                        creature2.apply();
+                        map[i][j] = new Road(i, j, creature2);
+                     //   System.out.print(iwanttodie2.getAttack() + " ");
                     }
                     else
                     {
-                        Fire iwanttodie2 = new Fire(iwanttodie);
-                        iwanttodie2.apply();
-                        map[i][j] = new House(i, j, iwanttodie2);
-                        System.out.print(iwanttodie2.getAttack() + " ");
+                        Fire creature2 = new Fire(creature);
+                        creature2.apply();
+                        map[i][j] = new Road(i, j, creature2);
+                      //  System.out.print(iwanttodie2.getAttack() + " ");
                     }
+                    System.out.print("R  ");
                 }
-
               //  System.out.print(iwanttodie.getAttack());
             }
             System.out.println();
-
         }
 
 
     }
 
 
-
-
-
-/*
-
-
-       int num = (int) Math.floor(Math.random() * 5);
-       if (num == 0)
-       {
-           Air one = new Air();
-           one.Fill();
-           one.apply();
-       }
-
-        if (num == 1)
-        {
-            Earth one = new Earth();
-            one.Fill();
-            one.apply();
-        }
-        if (num == 0)
-        {
-            Fire one = new Fire();
-            one.Fill();
-            one.apply();
-        }
-        if (num == 0)
-        {
-            Water one = new Water();
-            one.Fill();
-            one.apply();
-        }
-
-
+    public void playerbag(Person x)
+    {
+        x.bag[0] = new Creature("",0,0,0,0);
+        x.bag[1] = new Creature("pp",0,0,0,0);
+        x.bag[2] = new Creature("",0,0,0,0);
+        x.bag[3] = new Creature("",0,0,0,0);
+        x.bag[4] = new Creature("",0,0,0,0);
+        x.bag[5] = new Creature("",0,0,0,0);
 
     }
+public void enter(Person x)
+{
 
-*/
+    map[0][0].enterRoom(x);
+
+
+    x.bag[0] = map[0][0].getCreature();
+
+
+
+   // System.out.println(x.bag[0].getAttack());
+    x.printbag();
+   // map[0][0].captureCreature(x.getBag());
+}
+
+
+
+
+
+
 
 
     public void printBoard()

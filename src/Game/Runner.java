@@ -61,14 +61,22 @@ public class Runner {
 		//Create a random winning room.
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
-		building[x][y] = new WinningRoom(x, y,z);
+		building[x][y] = new WinningRoom(5, 5,z);
 
 
 
+		 Creature[] bag = new Creature[6];
 
-		 
 		 //Setup player 1 and the input scanner
 		Person player1 = new Person("FirstName", "FamilyName", 0,0);
+
+
+		board.playerbag(player1);
+
+		board.enter(player1);
+
+
+
 		building[0][0].enterRoom(player1);
 		Scanner in = new Scanner(System.in);
 		while(gameOn)
