@@ -1,13 +1,14 @@
 package Rooms;
 
+import Creatures.Creature;
 import Game.Runner;
 import People.Person;
 
 public class WinningRoom extends Room
 {
 
-	public WinningRoom(int x, int y) {
-		super(x, y);
+	public WinningRoom(int x, int y, Creature z) {
+		super(x, y, z);
 
 	}
 

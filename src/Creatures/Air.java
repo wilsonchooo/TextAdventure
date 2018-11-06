@@ -3,22 +3,36 @@ package Creatures;
 
 public class Air extends Creature {
 
-    public Air (int weight, String name, int speed, int defense , int xLoc, int yLoc )
+    public Air()
     {
-        super(weight,name,speed,defense, xLoc, yLoc);
+
     }
 
-    public static double speed (int speed)
+    public Air (Creature creature)
     {
-       double speed2 =  speed *1.5;
-       return speed2;
+        this.weight = creature.weight;
+        this.attack = creature.attack;
+        this.speed = creature.speed;
+        this.defense = creature.defense;
+
+    }
+    public Air (double weight, String name, double attack, double speed, double defense )
+    {
+        super(name,weight,attack,speed,defense);
     }
 
-    public static double defense (int defense)
+    public void apply()
     {
-        double defense2 =  defense *.8;
-        return defense2;
+        this.weight = round(this.weight *.5,2);
+
+        this.attack =round(this.attack *.9,2);
+
+        this.speed = round(this.speed *2,2) ;
+
+        this.defense =round(this.defense *.8,2);
+
     }
+
 
 
 

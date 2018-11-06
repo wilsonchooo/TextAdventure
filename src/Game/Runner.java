@@ -1,7 +1,8 @@
 package Game;
 
+import Creatures.Air;
+import Creatures.Creature;
 import People.Person;
-import Rooms.LosingRoom;
 import Rooms.Room;
 import Rooms.WinningRoom;
 
@@ -19,24 +20,51 @@ public class Runner {
 		//Fill the building with normal rooms
 		for (int x = 0; x<building.length; x++)
 		{
+			Creature z = null;
 			for (int y = 0; y < building[x].length; y++)
 			{
-				building[x][y] = new Room(x,y);
-				System.out.println();
+				building[x][y] = new Room(x,y,z);
 			}
-			System.out.println();
 
 		}
-		
+
+		Board board = new Board(5,5);
+		board.fillBoard();
+
+		//board.printBoard();
+
+
+		Creature z = new Creature();
+
+		//z.Fill();
+
+		/*
+		System.out.println(z.getWeight());
+		System.out.println(z.getAttack());
+		System.out.println(z.getSpeed());
+
+		System.out.println(z.getDefense());
+
+
+
+
+		Air test = new Air();
+		test.Fill();
+		test.apply();
+
+		System.out.println(test.getWeight());
+		System.out.println(test.getAttack());
+		System.out.println(test.getSpeed());
+		System.out.println(test.getDefense());
+*/
+
 		//Create a random winning room.
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
-		building[x][y] = new WinningRoom(x, y);
+		building[x][y] = new WinningRoom(x, y,z);
 
 
-		int q = (int)(Math.random()*building.length);
-		int w = (int)(Math.random()*building.length);
-		building[x][y] = new LosingRoom(q, w);
+
 
 		 
 		 //Setup player 1 and the input scanner
