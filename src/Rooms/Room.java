@@ -3,6 +3,8 @@ package Rooms;
 import Creatures.Creature;
 import People.Person;
 
+import java.util.Scanner;
+
 import static People.Person.bag;
 
 public class Room {
@@ -41,9 +43,26 @@ public class Room {
                 break;
             }
 
-
         }
+		if (!person.getBag()[5].getName().equals(""))
+		{
+			System.out.println("What is the position of the pokemon you want to replace");
+			Scanner replace = new Scanner(System.in);
+			String stringnumber = replace.nextLine();
+			int number = Integer.parseInt(stringnumber);
+			replaceCreature(person,number);
+		}
+
     }
+    public void replaceCreature(Person person, int position )
+	{
+		person.getBag()[position].name = this.creature.name;
+		person.getBag()[position].attack = this.creature.attack;
+		person.getBag()[position].defense = this.creature.defense;
+		person.getBag()[position].speed = this.creature.speed;
+		person.getBag()[position].weight = this.creature.weight;
+
+	}
 	public void enterRoom(Person x)
 	{
 		System.out.println("You enter a plain old room");

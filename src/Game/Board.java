@@ -132,8 +132,17 @@ public void enter(Person x)
    // map[0][0].captureCreature(x.getBag());
 }
 
+public void capture(Person x)
+{
+    map[x.getxLoc()][x.getyLoc()].captureCreature(x);
 
+}
 
+public Creature getCreature(Person x)
+{
+    return map[x.getxLoc()][x.getyLoc()].creature;
+
+}
 
 
 

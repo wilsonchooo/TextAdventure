@@ -86,7 +86,18 @@ public class Runner {
 			if(validMove(move, player1, board.map))
 			{
 				System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
-				
+				System.out.println("you encounter a " + board.getCreature(player1).getName());
+				System.out.println("Would you like to catch it?");
+				String catchthing = in.nextLine();
+				if (catchthing.equals("catch") || catchthing.equals("yes") || catchthing.equals("ok") || catchthing.equals("capture"))
+
+					{
+						board.capture(player1);
+
+						player1.printbag();
+					}
+
+
 			}
 			else {
 				System.out.println("Please choose a valid move.");
@@ -113,6 +124,7 @@ public class Runner {
 				{
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
 					map[p.getxLoc()-1][p.getyLoc()].enterRoom(p);
+
 					return true;
 				}
 				else
@@ -150,6 +162,8 @@ public class Runner {
 					map[p.getxLoc()][p.getyLoc()-1].enterRoom(p);
 					return true;
 				}
+
+
 				else
 				{
 					return false;
