@@ -45,7 +45,7 @@ public class Room {
 			System.out.println("What is the position of the pokemon you want to replace");
 			Scanner replace = new Scanner(System.in);
 			String stringnumber = replace.nextLine();
-			int number = Integer.parseInt(stringnumber);
+			int number = Integer.parseInt(stringnumber)-1;
 			replaceCreature(person,number);
 		}
 
