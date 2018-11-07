@@ -120,10 +120,10 @@ public class Board {
 public void enter(Person x)
 {
 
-    map[0][0].enterRoom(x);
+    map[x.getxLoc()][x.getyLoc()].enterRoom(x);
+    map[x.getxLoc()][x.getyLoc()].captureCreature(x);
 
-
-    x.bag[0] = map[0][0].getCreature();
+   // x.bag[0] = map[0][0].getCreature();
 
 
 
@@ -131,6 +131,8 @@ public void enter(Person x)
     x.printbag();
    // map[0][0].captureCreature(x.getBag());
 }
+
+
 
 
 

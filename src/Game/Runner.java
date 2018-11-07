@@ -59,9 +59,8 @@ public class Runner {
 */
 
 		//Create a random winning room.
-		int x = (int)(Math.random()*building.length);
-		int y = (int)(Math.random()*building.length);
-		building[x][y] = new WinningRoom(5, 5,z);
+
+		board.map[4][4] = new WinningRoom(4, 4,z);
 
 
 
@@ -77,13 +76,14 @@ public class Runner {
 
 
 
-		building[0][0].enterRoom(player1);
+		//building[0][0].enterRoom(player1);
 		Scanner in = new Scanner(System.in);
 		while(gameOn)
 		{
 			System.out.println("Where would you like to move? (Choose N, S, E, W)");
 			String move = in.nextLine();
-			if(validMove(move, player1, building))
+
+			if(validMove(move, player1, board.map))
 			{
 				System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
 				

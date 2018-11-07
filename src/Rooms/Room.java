@@ -3,6 +3,8 @@ package Rooms;
 import Creatures.Creature;
 import People.Person;
 
+import static People.Person.bag;
+
 public class Room {
 	Person occupant;
 	int xLoc,yLoc;
@@ -29,13 +31,13 @@ public class Room {
         return this.creature;
     }
 
-    public void captureCreature(Creature[] bag)
+    public void captureCreature(Person person)
     {
-        for (int i=0;i<bag.length;i++)
+        for (int i=0;i<person.getBag().length;i++)
         {
-            if (bag[i].getAttack() == 0 )
+            if (person.getBag()[i].getName().equals("") )
             {
-                bag[i] = this.creature;
+                person.getBag()[i] = this.creature;
                 break;
             }
 
@@ -48,6 +50,8 @@ public class Room {
 		occupant = x;
 		x.setxLoc(this.xLoc);
 		x.setyLoc(this.yLoc);
+
+
 	}
 
 	/**
