@@ -23,10 +23,6 @@ public class Room {
 		this.creature = z;
 	}
 
-	/**
-	 * Method controls the results when a person enters this room.
-	 * @param x the Person entering
-	 */
 
 	public Creature getCreature()
     {
