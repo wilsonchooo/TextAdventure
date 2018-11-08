@@ -27,7 +27,6 @@ public void getstats(Person x)
 {
 	Scanner statposition = new Scanner(System.in);
 
-	System.out.println("What is the position of the pokemon you want to check?");
 	int position = statposition.nextInt() ;
 	System.out.println("This pokemon's name is " +x.getBag()[position+-1].name);
 	System.out.println("Attack: " +x.getBag()[position-1].attack);

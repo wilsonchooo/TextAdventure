@@ -53,6 +53,8 @@ public class Runner {
 
 		board.printboard(visual);
 		player1.printbag();
+		System.out.println("What is the position of the pokemon you want to check?");
+
 
 
 		//building[0][0].enterRoom(player1);
