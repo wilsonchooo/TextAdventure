@@ -2,6 +2,8 @@ package People;
 
 import Creatures.Creature;
 
+import java.util.Scanner;
+
 /**
  * Person represents the player as they move through the game.
  */
@@ -21,7 +23,18 @@ public class Person {
 	 }
 
 
+public void getstats(Person x)
+{
+	Scanner statposition = new Scanner(System.in);
 
+	System.out.println("What is the position of the pokemon you want to check?");
+	int position = statposition.nextInt() ;
+	System.out.println("This pokemon's name is " +x.getBag()[position+-1].name);
+	System.out.println("Attack: " +x.getBag()[position-1].attack);
+	System.out.println("Speed: " +x.getBag()[position-1].speed);
+	System.out.println("Defense: " +x.getBag()[position-1].defense);
+	System.out.println("Weight: " +x.getBag()[position-1].weight);
+}
 
 	 public void printbag ()
 	 {

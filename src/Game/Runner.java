@@ -60,6 +60,8 @@ public class Runner {
 		while(gameOn)
 		{
 			System.out.println("Where would you like to move? (Choose N, S, E, W)");
+			System.out.println("Write stats or stat to find out the stats on your pokemon");
+
 			String move = in.nextLine();
 
 			if(validMove(move, player1, board.map,visual))
@@ -69,7 +71,7 @@ public class Runner {
 				System.out.println("you encounter a " + board.getCreature(player1).getName());
 				System.out.println("Would you like to catch it?");
 				String catchthing = in.nextLine();
-				if (catchthing.equals("catch") || catchthing.equals("yes") || catchthing.equals("Yes") ||catchthing.equals("ok") || catchthing.equals("capture"))
+				if (catchthing.equals("catch") || catchthing.equals("yes") || catchthing.equals("Yes") ||catchthing.equals("ok") || catchthing.equals("capture")||catchthing.equals("y"))
 					{
 						board.capture(player1);
 						player1.printbag();
@@ -104,6 +106,20 @@ public class Runner {
 	{
 		move = move.toLowerCase().trim();
 		switch (move) {
+			case "stat":
+			{
+					p.getstats(p);
+			break;
+			}
+
+			case "stats":
+			{
+					p.getstats(p);
+					break;
+				}
+
+
+
 			case "n":
 				if (p.getxLoc() > 0)
 				{
@@ -164,6 +180,7 @@ public class Runner {
                     else return false;
 
                 }
+
 
 
 				else
