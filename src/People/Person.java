@@ -29,8 +29,10 @@ public class Person {
 		{
 			if (this.bag[i].getName().equals(""))
 				System.out.println("blank");
-			else
-			System.out.println(this.bag[i].getName());
+			else {
+
+				System.out.println( this.bag[i].getName());
+			}
 		}
 	 }
 

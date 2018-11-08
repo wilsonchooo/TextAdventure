@@ -11,6 +11,8 @@ import Rooms.House;
 import Rooms.Road;
 import Rooms.Room;
 
+import java.util.Arrays;
+
 public class Board {
     Room[][] map;
 
@@ -26,13 +28,8 @@ public class Board {
         map[row][col] = room;
     }
 
-    public void fillBoard() {
 
-        String[] names = {"name1", "name2", "name3", "name4", "name5", "name6", "name7", "name8", "name9", "name10", "name11", "name12", "name13", "name14", "name15", "name16", "name17", "name18", "name19", "name20", "name21", "name22", "name23", "name24", "name25",};
-
-        Air one = new Air();
-        one.Fill();
-        one.apply();
+    public void fillBoard(String [][] visual) {
 
 
         for (int i = 0; i < map.length; i++) {
@@ -42,8 +39,6 @@ public class Board {
             for (int j = 0; j < map[i].length; j++) {
                 int roomtype = (int) Math.floor(Math.random() * 3);
                 int monstertype = (int) Math.floor(Math.random() * 5);
-               // System.out.print(monstertype);
-                //System.out.println(roomtype);
 
                 if (roomtype == 0) {
 
@@ -51,16 +46,15 @@ public class Board {
                         Fire creature2 = new Fire(creature);
                         creature2.apply();
                         map[i][j] = new House(i, j, creature2);
-                     //   System.out.print(iwanttodie2.getAttack() + " ");
                     }
                     else
                     {
                         Water creature2 = new Water(creature);
                         creature2.apply();
-                        //System.out.print(iwanttodie2.getAttack() + " ");
                         map[i][j] = new House(i, j, creature2);
                     }
-                    System.out.print("H  ");
+                   // System.out.print("H  ");
+                    visual[i][j] = "H";
                 }
                 if (roomtype == 1) {
 
@@ -69,16 +63,15 @@ public class Board {
                         Earth creature2 = new Earth(creature);
                         creature2.apply();
                         map[i][j] = new Forest(i, j, creature2);
-                       // System.out.print(iwanttodie2.getAttack() + " ");
                     }
                     else
                         {
                         Water creature2 = new Water(creature);
                             creature2.apply();
                         map[i][j] = new Forest(i, j, creature2);
-                        //System.out.print(iwanttodie2.getAttack() + " ");
                     }
-                    System.out.print("F  ");
+                 //   System.out.print("F  ");
+                    visual[i][j] = "F";
                 }
                 if (roomtype == 2) {
 
@@ -87,20 +80,18 @@ public class Board {
                         Air creature2 = new Air(creature);
                         creature2.apply();
                         map[i][j] = new Road(i, j, creature2);
-                     //   System.out.print(iwanttodie2.getAttack() + " ");
                     }
                     else
                     {
                         Fire creature2 = new Fire(creature);
                         creature2.apply();
                         map[i][j] = new Road(i, j, creature2);
-                      //  System.out.print(iwanttodie2.getAttack() + " ");
                     }
-                    System.out.print("R  ");
+                   // System.out.print("R  ");
+                    visual[i][j] = "R";
                 }
-              //  System.out.print(iwanttodie.getAttack());
             }
-            System.out.println();
+            //System.out.println();
         }
 
 
@@ -110,7 +101,7 @@ public class Board {
     public void playerbag(Person x)
     {
         x.bag[0] = new Creature("",0,0,0,0);
-        x.bag[1] = new Creature("pp",0,0,0,0);
+        x.bag[1] = new Creature("",0,0,0,0);
         x.bag[2] = new Creature("",0,0,0,0);
         x.bag[3] = new Creature("",0,0,0,0);
         x.bag[4] = new Creature("",0,0,0,0);
@@ -123,13 +114,7 @@ public void enter(Person x)
     map[x.getxLoc()][x.getyLoc()].enterRoom(x);
     map[x.getxLoc()][x.getyLoc()].captureCreature(x);
 
-   // x.bag[0] = map[0][0].getCreature();
 
-
-
-   // System.out.println(x.bag[0].getAttack());
-    x.printbag();
-   // map[0][0].captureCreature(x.getBag());
 }
 
 public void capture(Person x)
@@ -146,20 +131,15 @@ public Creature getCreature(Person x)
 
 
 
-
-
-
-
-    public void printBoard()
-    {
-        for (Room[] i:map)
+   public void printboard (String[][]x) {
+        for (int i = 0; i < x.length; i++)
         {
-            for (Room j:i)
-            {
-                System.out.print("x");
-            }
+
+            System.out.print(Arrays.toString(x[i]));
             System.out.println();
+
         }
-    }
+
+   }
 
 }

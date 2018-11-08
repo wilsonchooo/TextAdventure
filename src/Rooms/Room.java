@@ -16,6 +16,11 @@ public class Room {
     {
 
     }
+    public Room (int x, int y)
+	{
+		xLoc = x;
+		yLoc = y;
+	}
 	public Room(int x, int y, Creature z)
 	{
 		xLoc = x;
@@ -31,6 +36,16 @@ public class Room {
 
     public void captureCreature(Person person)
     {
+		if (!person.getBag()[5].getName().equals(""))
+		{
+			System.out.println("What is the position of the pokemon you want to replace");
+			person.printbag();
+			Scanner replace = new Scanner(System.in);
+			String stringnumber = replace.nextLine();
+			int number = Integer.parseInt(stringnumber)-1;
+			replaceCreature(person,number);
+		}
+
         for (int i=0;i<person.getBag().length;i++)
         {
             if (person.getBag()[i].getName().equals("") )
@@ -40,14 +55,8 @@ public class Room {
             }
 
         }
-		if (!person.getBag()[5].getName().equals(""))
-		{
-			System.out.println("What is the position of the pokemon you want to replace");
-			Scanner replace = new Scanner(System.in);
-			String stringnumber = replace.nextLine();
-			int number = Integer.parseInt(stringnumber)-1;
-			replaceCreature(person,number);
-		}
+
+
 
     }
     public void replaceCreature(Person person, int position )
@@ -65,9 +74,8 @@ public class Room {
 		occupant = x;
 		x.setxLoc(this.xLoc);
 		x.setyLoc(this.yLoc);
-
-
 	}
+
 
 	/**
 	 * Removes the player from the room.

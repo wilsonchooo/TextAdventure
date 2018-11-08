@@ -28,52 +28,31 @@ public class Runner {
 
 		}
 
-		Board board = new Board(5,5);
-		board.fillBoard();
 
-		//board.printBoard();
-
-
-		Creature z = new Creature();
-
-		//z.Fill();
-
-		/*
-		System.out.println(z.getWeight());
-		System.out.println(z.getAttack());
-		System.out.println(z.getSpeed());
-
-		System.out.println(z.getDefense());
-
-
-
-
-		Air test = new Air();
-		test.Fill();
-		test.apply();
-
-		System.out.println(test.getWeight());
-		System.out.println(test.getAttack());
-		System.out.println(test.getSpeed());
-		System.out.println(test.getDefense());
-*/
 
 		//Create a random winning room.
+		String[][] visual = new String[5][5];
 
-		board.map[4][4] = new WinningRoom(4, 4,z);
+		Board board = new Board(5,5);
+		board.fillBoard(visual);
+
+		Creature z = new Creature();
+		board.map[4][4] = new WinningRoom(4, 4);
 
 
 
 		 Creature[] bag = new Creature[6];
 
-		 //Setup player 1 and the input scanner
 		Person player1 = new Person("FirstName", "FamilyName", 0,0);
 
 
 		board.playerbag(player1);
 
 		board.enter(player1);
+		visual[player1.getxLoc()][player1.getyLoc()] = "*";
 
+		board.printboard(visual);
+		player1.printbag();
 
 
 		//building[0][0].enterRoom(player1);
@@ -83,23 +62,29 @@ public class Runner {
 			System.out.println("Where would you like to move? (Choose N, S, E, W)");
 			String move = in.nextLine();
 
-			if(validMove(move, player1, board.map))
+			if(validMove(move, player1, board.map,visual))
 			{
 				System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
+				//visual[player1.getxLoc()][player1.getyLoc()] = "((" + visual[player1.getxLoc()][player1.getyLoc()] +" ))";
 				System.out.println("you encounter a " + board.getCreature(player1).getName());
 				System.out.println("Would you like to catch it?");
 				String catchthing = in.nextLine();
-				if (catchthing.equals("catch") || catchthing.equals("yes") || catchthing.equals("ok") || catchthing.equals("capture"))
-
+				if (catchthing.equals("catch") || catchthing.equals("yes") || catchthing.equals("Yes") ||catchthing.equals("ok") || catchthing.equals("capture"))
 					{
 						board.capture(player1);
-
 						player1.printbag();
+
+
+						//board.map[player1.getxLoc()][player1.getyLoc()].getCreature().name = "";
+
+
 					}
+				visual[player1.getxLoc()][player1.getyLoc()] = "*";
 
-
+					board.printboard(visual);
 			}
-			else {
+			else
+				{
 				System.out.println("Please choose a valid move.");
 			}
 			
@@ -115,53 +100,70 @@ public class Runner {
 	 * @param map the 2D array of rooms
 	 * @return
 	 */
-	public static boolean validMove(String move, Person p, Room[][] map)
+	public static boolean validMove(String move, Person p, Room[][] map, String [][] visual)
 	{
 		move = move.toLowerCase().trim();
 		switch (move) {
 			case "n":
 				if (p.getxLoc() > 0)
 				{
-					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
-					map[p.getxLoc()-1][p.getyLoc()].enterRoom(p);
+				    if (!visual[p.getxLoc()-1][p.getyLoc()].equals("*") ) {
+                        map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
+                        map[p.getxLoc() - 1][p.getyLoc()].enterRoom(p);
+                        return true;
+                    }
+                    else return false;
 
-					return true;
 				}
 				else
 				{
 					return false;
 				}
 			case "e":
-				if (p.getyLoc()< map[p.getyLoc()].length -1)
+				if (p.getyLoc()< map[p.getyLoc()].length -1  )
 				{
-					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
-					map[p.getxLoc()][p.getyLoc() + 1].enterRoom(p);
-					return true;
-				}
+                    if (!visual[p.getxLoc()][p.getyLoc()+1].equals("*") ) {
+                        map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
+                        map[p.getxLoc()][p.getyLoc() + 1].enterRoom(p);
+                        return true;
+                    }
+                    else return false;
+
+                }
 				else
 				{
 					return false;
 				}
 
 			case "s":
-				if (p.getxLoc() < map.length - 1)
+				if (p.getxLoc() < map.length - 1 )
 				{
-					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
-					map[p.getxLoc()+1][p.getyLoc()].enterRoom(p);
-					return true;
-				}
+                    if (!visual[p.getxLoc()+1][p.getyLoc()].equals("*") ) {
+
+                        map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
+                        map[p.getxLoc() + 1][p.getyLoc()].enterRoom(p);
+                        return true;
+                    }
+                    else return false;
+
+                }
 				else
 				{
 					return false;
 				}
 
 			case "w":
-				if (p.getyLoc() > 0)
+				if (p.getyLoc() > 0 )
 				{
-					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
-					map[p.getxLoc()][p.getyLoc()-1].enterRoom(p);
-					return true;
-				}
+                    if (!visual[p.getxLoc()][p.getyLoc()-1].equals("*") ) {
+
+                        map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
+                        map[p.getxLoc()][p.getyLoc() - 1].enterRoom(p);
+                        return true;
+                    }
+                    else return false;
+
+                }
 
 
 				else
