@@ -53,8 +53,8 @@ public class Runner {
 
 		board.printboard(visual);
 		player1.printbag();
-		System.out.println("What is the position of the pokemon you want to check?");
 
+		System.out.println("Write stats or stat to find out the stats on your pokemon");
 
 
 		//building[0][0].enterRoom(player1);
@@ -62,7 +62,6 @@ public class Runner {
 		while(gameOn)
 		{
 			System.out.println("Where would you like to move? (Choose N, S, E, W)");
-			System.out.println("Write stats or stat to find out the stats on your pokemon");
 
 			String move = in.nextLine();
 
@@ -111,7 +110,7 @@ public class Runner {
 			case "stat":
 			{
 					p.getstats(p);
-			break;
+					break;
 			}
 
 			case "stats":
