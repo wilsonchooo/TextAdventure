@@ -110,13 +110,15 @@ public class Runner {
 			case "stat":
 			{
 					p.getstats(p);
-					break;
+					return false;
+					//break;
 			}
 
 			case "stats":
 			{
 					p.getstats(p);
-					break;
+				return false;
+				//break;
 				}
 
 
