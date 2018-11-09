@@ -29,14 +29,15 @@ public class Board {
     }
 
 
-    public void fillBoard(String [][] visual) {
+    public void fillBoard(String [][] visual) { //Fills the board with randomly made creatures. Also randomly creates different rooms and makes creatures according to the room type.
 
 
         for (int i = 0; i < map.length; i++) {
-            Creature creature = new Creature();
-            creature.Fill();
+
 
             for (int j = 0; j < map[i].length; j++) {
+                Creature creature = new Creature();
+                creature.Fill();
                 int roomtype = (int) Math.floor(Math.random() * 3);
                 int monstertype = (int) Math.floor(Math.random() * 5);
 
@@ -53,7 +54,6 @@ public class Board {
                         creature2.apply();
                         map[i][j] = new House(i, j, creature2);
                     }
-                   // System.out.print("H  ");
                     visual[i][j] = "H";
                 }
                 if (roomtype == 1) {
@@ -70,7 +70,6 @@ public class Board {
                             creature2.apply();
                         map[i][j] = new Forest(i, j, creature2);
                     }
-                 //   System.out.print("F  ");
                     visual[i][j] = "F";
                 }
                 if (roomtype == 2) {
@@ -87,18 +86,17 @@ public class Board {
                         creature2.apply();
                         map[i][j] = new Road(i, j, creature2);
                     }
-                   // System.out.print("R  ");
                     visual[i][j] = "R";
                 }
             }
-            //System.out.println();
         }
 
 
     }
 
 
-    public void playerbag(Person x)
+
+    public void playerbag(Person x) //creates an empty bag
     {
         x.bag[0] = new Creature("",0,0,0,0);
         x.bag[1] = new Creature("",0,0,0,0);
@@ -108,7 +106,7 @@ public class Board {
         x.bag[5] = new Creature("",0,0,0,0);
 
     }
-public void enter(Person x)
+public void enter(Person x) //Allows the player to catch a creature
 {
 
     map[x.getxLoc()][x.getyLoc()].enterRoom(x);
@@ -117,13 +115,13 @@ public void enter(Person x)
 
 }
 
-public void capture(Person x)
+public void capture(Person x) //Allows player to capture creature
 {
     map[x.getxLoc()][x.getyLoc()].captureCreature(x);
 
 }
 
-public Creature getCreature(Person x)
+public Creature getCreature(Person x) //Gets a creature from a room
 {
     return map[x.getxLoc()][x.getyLoc()].creature;
 
@@ -131,15 +129,18 @@ public Creature getCreature(Person x)
 
 
 
-   public void printboard (String[][]x) {
-        for (int i = 0; i < x.length; i++)
-        {
 
-            System.out.print(Arrays.toString(x[i]));
-            System.out.println();
+   public void printBoard(String [][] x) //prints the board
+   {
+       for (String[] i : x)
+       {
+           for (String j : i)
+           {
+               System.out.print(j + "  ");
 
-        }
-
+           }
+           System.out.println();
+       }
    }
 
 }

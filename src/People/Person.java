@@ -23,19 +23,20 @@ public class Person {
 	 }
 
 
-public void getstats(Person x)
+public void getstats(Person x) //Returns the stats of the specified creatures
 {
 	Scanner statposition = new Scanner(System.in);
 	System.out.println("what is the position of the pokemon you want to view");
 	int position = statposition.nextInt() ;
 	System.out.println("This pokemon's name is " +x.getBag()[position+-1].name);
+	System.out.println("Type: " +x.getBag()[position-1].getType());
 	System.out.println("Attack: " +x.getBag()[position-1].attack);
 	System.out.println("Speed: " +x.getBag()[position-1].speed);
 	System.out.println("Defense: " +x.getBag()[position-1].defense);
 	System.out.println("Weight: " +x.getBag()[position-1].weight);
 }
 
-	 public void printbag ()
+	 public void printbag () //prints the creatures in the bag
 	 {
 	 	for (int i=0; i< this.bag.length;i++)
 		{

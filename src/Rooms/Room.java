@@ -29,12 +29,12 @@ public class Room {
 	}
 
 
-	public Creature getCreature()
+	public Creature getCreature() //Returns creature in room
     {
         return this.creature;
     }
 
-    public void captureCreature(Person person)
+    public void captureCreature(Person person) //Finds the next empty location in the bag and places it there. If none, prompts the user to give a location to replace the creature.
     {
 		if (!person.getBag()[5].getName().equals(""))
 		{

@@ -17,7 +17,7 @@ public class Creature {
     {
     }
 
-    public Creature(String name, double weight,  double attack, double speed, double defense)
+    public Creature(String name, double weight,  double attack, double speed, double defense) //Constructor for a creature
         {
             this.weight = weight;
             this.name = name;
@@ -27,7 +27,7 @@ public class Creature {
 
         }
 
-        public void Fill()
+        public void Fill() //Randomly creates a creature with stats and names
         {
             double [] stats = new double[4];
 
@@ -55,12 +55,12 @@ public class Creature {
 
 
 
-    public static double round (double value, int precision) {
+    public static double round (double value, int precision) { // Rounds a value to the nearest "percision" places
         int scale = (int) Math.pow(10, precision);
         return (double) Math.round(value * scale) / scale;
     }
 
-
+// Returns values
         public double getAttack()
     {
         return attack;
@@ -78,25 +78,23 @@ public class Creature {
     public double getDefense() {
         return defense;
     }
-
-
-
-
     public int getxLoc() {
         return xLoc;
     }
-
     public void setxLoc(int xLoc) {
         this.xLoc = xLoc;
     }
-
     public int getyLoc() {
         return yLoc;
     }
-
     public void setyLoc(int yLoc) {
         this.yLoc = yLoc;
     }
 
-
+//Returns type
+    public String getType()
+    {
+        String Type = "Normal";
+        return Type;
+    }
 }

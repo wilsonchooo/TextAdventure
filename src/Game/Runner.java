@@ -15,18 +15,6 @@ public class Runner {
 	
 	public static void main(String[] args)
 	{
-		Room[][] building = new Room[5][5];
-		
-		//Fill the building with normal rooms
-		for (int x = 0; x<building.length; x++)
-		{
-			Creature z = null;
-			for (int y = 0; y < building[x].length; y++)
-			{
-				building[x][y] = new Room(x,y,z);
-			}
-
-		}
 
 
 
@@ -36,8 +24,7 @@ public class Runner {
 		Board board = new Board(5,5);
 		board.fillBoard(visual);
 
-		Creature z = new Creature();
-		board.map[4][4] = new WinningRoom(4, 4);
+		board.map[4][4] = new WinningRoom(4, 4); //Creates a winning room at [4][4]
 
 
 
@@ -49,25 +36,26 @@ public class Runner {
 		board.playerbag(player1);
 
 		board.enter(player1);
-		visual[player1.getxLoc()][player1.getyLoc()] = "*";
+		visual[player1.getxLoc()][player1.getyLoc()] = "*"; //Shows the players current location
 
-		board.printboard(visual);
+		board.printBoard(visual);
 		player1.printbag();
 
-		System.out.println("Write stats or stat to find out the stats on your pokemon");
 
 
 		//building[0][0].enterRoom(player1);
 		Scanner in = new Scanner(System.in);
 		while(gameOn)
 		{
-			System.out.println("Where would you like to move? (Choose N, S, E, W)");
+			System.out.println("Where would you like to move? (Choose N, S, E, W) Stats or Guide");
 
 			String move = in.nextLine();
 
 			if(validMove(move, player1, board.map,visual))
 			{
 				System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
+                visual[0][0] = "x";
+				visual[player1.getxLoc()][player1.getyLoc()] = "*";
 				//visual[player1.getxLoc()][player1.getyLoc()] = "((" + visual[player1.getxLoc()][player1.getyLoc()] +" ))";
 				System.out.println("you encounter a " + board.getCreature(player1).getName());
 				System.out.println("Would you like to catch it?");
@@ -76,15 +64,11 @@ public class Runner {
 					{
 						board.capture(player1);
 						player1.printbag();
-
-
-						//board.map[player1.getxLoc()][player1.getyLoc()].getCreature().name = "";
-
-
 					}
-				visual[player1.getxLoc()][player1.getyLoc()] = "*";
+                board.printBoard(visual);
 
-					board.printboard(visual);
+                visual[player1.getxLoc()][player1.getyLoc()] = "x";
+
 			}
 			else
 				{
@@ -107,26 +91,46 @@ public class Runner {
 	{
 		move = move.toLowerCase().trim();
 		switch (move) {
-			case "stat":
+			case "stat": //if user inputs stats or stat gives them the stats of the position that they specify
 			{
+			        p.printbag();
 					p.getstats(p);
 					return false;
-					//break;
 			}
 
 			case "stats":
 			{
-					p.getstats(p);
+                p.printbag();
+                p.getstats(p);
 				return false;
-				//break;
 				}
 
 
 
+
+            case "guide":
+            {
+                System.out.println("There are three types of terrain in this game: ");
+                System.out.println("House: only fire and water type pokemon can be found here.");
+                System.out.println("Road: only air and fire type pokemon can be found here.");
+                System.out.println("Forest: only earth and water type pokemon can be found here. ");
+                System.out.println();
+                System.out.println("Air pokemon have an attack multiplier of .9, speed multiplier of 2, defense multiplier of .8 and a weight multiplier of .5.");
+                System.out.println("Earth pokemon have an attack multiplier of 1.3, speed multiplier of .62, defense multiplier of 1.6 and a weight multiplier of 8.");
+                System.out.println("Fire pokemon have an attack multiplier of 3, speed multiplier of 1.1, defense multiplier of .7 and a weight multiplier of 1.3.");
+                System.out.println("Water pokemon have an attack multiplier of 3, speed multiplier of 1.5, defense multiplier of .8 and a weight multiplier of .8.");
+                System.out.println();
+
+                return false;
+
+
+
+
+            }
 			case "n":
 				if (p.getxLoc() > 0)
 				{
-				    if (!visual[p.getxLoc()-1][p.getyLoc()].equals("*") ) {
+				    if (!visual[p.getxLoc()-1][p.getyLoc()].equals("x") ) {
                         map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
                         map[p.getxLoc() - 1][p.getyLoc()].enterRoom(p);
                         return true;
@@ -141,9 +145,10 @@ public class Runner {
 			case "e":
 				if (p.getyLoc()< map[p.getyLoc()].length -1  )
 				{
-                    if (!visual[p.getxLoc()][p.getyLoc()+1].equals("*") ) {
+                    if (!visual[p.getxLoc()][p.getyLoc()+1].equals("x") ) {
                         map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
                         map[p.getxLoc()][p.getyLoc() + 1].enterRoom(p);
+
                         return true;
                     }
                     else return false;
@@ -157,10 +162,11 @@ public class Runner {
 			case "s":
 				if (p.getxLoc() < map.length - 1 )
 				{
-                    if (!visual[p.getxLoc()+1][p.getyLoc()].equals("*") ) {
+                    if (!visual[p.getxLoc()+1][p.getyLoc()].equals("x") ) {
 
                         map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
                         map[p.getxLoc() + 1][p.getyLoc()].enterRoom(p);
+
                         return true;
                     }
                     else return false;
@@ -174,10 +180,11 @@ public class Runner {
 			case "w":
 				if (p.getyLoc() > 0 )
 				{
-                    if (!visual[p.getxLoc()][p.getyLoc()-1].equals("*") ) {
+                    if (!visual[p.getxLoc()][p.getyLoc()-1].equals("x") ) {
 
                         map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
                         map[p.getxLoc()][p.getyLoc() - 1].enterRoom(p);
+
                         return true;
                     }
                     else return false;

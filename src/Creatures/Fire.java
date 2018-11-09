@@ -2,12 +2,12 @@ package Creatures;
 
 
 public class Fire extends Creature {
-    public Fire()
+    public Fire() //Empty Constructor
     {
 
     }
 
-    public Fire (Creature creature)
+    public Fire (Creature creature) // Takes in a creature in order to build an "Air" creature with the same attributes.
     {
         this.name = creature.name;
 
@@ -17,7 +17,7 @@ public class Fire extends Creature {
         this.defense = creature.defense;
     }
 
-    public Fire (double weight, String name, double attack, double speed, double defense  )
+    public Fire (double weight, String name, double attack, double speed, double defense  ) // Takes creature stats from a normal creature
     {
         super(name, weight,attack,speed,defense);
     }
@@ -25,7 +25,7 @@ public class Fire extends Creature {
 
 
 
-    public void apply()
+    public void apply() // Changes the stats to fit with fire
     {
         this.weight =round(this.weight *1.3,2);
 
@@ -35,6 +35,11 @@ public class Fire extends Creature {
 
         this.defense = round(this.defense *.7,2);
 
+    }
+    public String getType() //returns type
+    {
+        String Type = "Water";
+        return Type;
     }
 
 }
