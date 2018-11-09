@@ -4,6 +4,7 @@ import Creatures.Creature;
 import People.Person;
 
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 import static People.Person.bag;
 
@@ -50,7 +51,11 @@ public class Room {
         {
             if (person.getBag()[i].getName().equals("") )
             {
-                person.getBag()[i] = this.creature;
+
+
+
+
+				person.getBag()[i] = this.creature;
                 break;
             }
 

@@ -62,8 +62,25 @@ public class Runner {
 				String catchthing = in.nextLine();
 				if (catchthing.equals("catch") || catchthing.equals("yes") || catchthing.equals("Yes") ||catchthing.equals("ok") || catchthing.equals("capture")||catchthing.equals("y"))
 					{
-						board.capture(player1);
-						player1.printbag();
+                        int catchrandom = (int) Math.floor(Math.random() * 2);
+
+                        for (int i=0;i<3;i++) {
+                            try {
+                                Thread.sleep(500);
+                                System.out.println(".");
+                            } catch (InterruptedException ex) {
+                                Thread.currentThread().interrupt();
+                            }
+                        }
+                        if (catchrandom == 1)
+                        {
+                            board.capture(player1);
+                            player1.printbag();
+                        }
+                        else
+                        {
+                            System.out.println("It ran away..");
+                        }
 					}
                 board.printBoard(visual);
 
