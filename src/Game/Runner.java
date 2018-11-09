@@ -62,7 +62,7 @@ public class Runner {
 				String catchthing = in.nextLine();
 				if (catchthing.equals("catch") || catchthing.equals("yes") || catchthing.equals("Yes") ||catchthing.equals("ok") || catchthing.equals("capture")||catchthing.equals("y"))
 					{
-                        int catchrandom = (int) Math.floor(Math.random() * 2);
+                        int catchrandom = (int) Math.floor(Math.random() * 11);
 
                         for (int i=0;i<3;i++) {
                             try {
@@ -72,7 +72,7 @@ public class Runner {
                                 Thread.currentThread().interrupt();
                             }
                         }
-                        if (catchrandom == 1)
+                        if (catchrandom <= 5)
                         {
                             board.capture(player1);
                             player1.printbag();

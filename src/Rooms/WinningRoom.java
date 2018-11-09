@@ -24,6 +24,8 @@ public class WinningRoom extends Room
 		x.setyLoc(this.yLoc);
 		System.out.println("That's the end of your journey.");
 		Runner.gameOff();
+		System.exit(0);
+
 	}
 	
 
