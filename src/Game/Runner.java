@@ -140,10 +140,6 @@ public class Runner {
                 System.out.println();
 
                 return false;
-
-
-
-
             }
 			case "n":
 				if (p.getxLoc() > 0)
@@ -219,7 +215,7 @@ public class Runner {
 				break;
 					
 		}
-		return true;
+		return false;
 	}
 	public static void gameOff()
 	{
