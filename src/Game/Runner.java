@@ -75,6 +75,7 @@ public class Runner {
                         if (catchrandom <= 5)
                         {
                             board.capture(player1);
+                            System.out.println("You captured " + board.getCreature(player1).getName() + "!");
                             player1.printbag();
                         }
                         else
